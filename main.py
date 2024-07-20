@@ -7,6 +7,7 @@ import os
 from dotenv import load_dotenv
 import google.generativeai as genai
 
+#Creating a class for the app window.
 class MainWindow(tk.Tk):
     def __init__(self, title, size1, size2):
         super().__init__()
@@ -19,6 +20,7 @@ class MainWindow(tk.Tk):
         self.iconphoto(True, self.icon)
         self.mainloop()
 
+#Creating a class for the error checkbox.
 class CheckBox(tk.Tk):
     def __init__(self, title, size1, size2):
         super().__init__()
@@ -31,17 +33,18 @@ class CheckBox(tk.Tk):
         self.iconphoto(True, self.icon)
         self.mainloop()
 
+#Creating a class for Xmathematics. This option can give  a user a perspective of how to solve a problem correctly.
 class Xmathematics(ttk.Frame):
-    def __init__(self, parent, Gemini_button_open, Gemini_button_solve):
+    def __init__(self, parent, Xmathematics_button_open, Xmathematics_button_solve):
         super().__init__(parent)
 
-        self.Gemini_show_image = None
+        self.Xmathematics_show_image = None
 
-        self.Gemini_button_open = ttk.Button(self, text = Gemini_button_open, command = self.open_Gemini).pack(fill = "both")
-        self.Gemini_button_solve = ttk.Button(self, text = Gemini_button_solve, command = self.solve_the_problem).pack(fill = "both")
+        self.Xmathematics_button_open = ttk.Button(self, text = Xmathematics_button_open, command = self.open_Xmathemtics).pack(fill = "both")
+        self.Xmathematics_button_solve = ttk.Button(self, text = Xmathematics_button_solve, command = self.solve_the_problem).pack(fill = "both")
         self.place(relx = 0, rely = 0, relwidth = 0.3, relheight = 1)
     
-    def open_Gemini(self):
+    def open_Xmathemtics(self):
         global img
         global filename
         filetype = [("jpg files", "*.jpg")]
@@ -49,12 +52,12 @@ class Xmathematics(ttk.Frame):
         img = Image.open(filename)
         img = img.resize((300,300))
         img = ImageTk.PhotoImage(img)
-        Gemini_show_image = ttk.Label(self, image = img)
-        Gemini_show_image.pack()
-        self.Gemini_show_image = img
+        Xmathemtics_show_image = ttk.Label(self, image = img)
+        Xmathemtics_show_image.pack()
+        self.Xmathemtics_show_image = img
 
     def solve_the_problem(self):
-        if self.Gemini_show_image is not None:
+        if self.Xmathematics_show_image is not None:
             load_dotenv()
             img = PIL.Image.open(filename)
             genai.configure(api_key=os.getenv("gemini_api_key"))
@@ -77,6 +80,7 @@ class Xmathematics(ttk.Frame):
         else:
             CheckBox("Error", (200,100), (200,100))
 
+#Creating a class for the users.
 class Users(ttk.Frame):
     def __init__(self, parent, button_text_user1, button_text_user2):
         super().__init__(parent)
