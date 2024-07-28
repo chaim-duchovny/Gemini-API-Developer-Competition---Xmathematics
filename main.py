@@ -7,6 +7,7 @@ import os
 from dotenv import load_dotenv
 import google.generativeai as genai
 
+#Here we creating the main window.
 class MainWindow(tk.Tk):
     def __init__(self, title, size1, size2):
         super().__init__()
@@ -19,6 +20,7 @@ class MainWindow(tk.Tk):
         self.iconphoto(True, self.icon)
         self.mainloop()
 
+#Here we creating the error windo in case an image was not choosed.
 class CheckBox(tk.Tk):
     def __init__(self, title, size1, size2):
         super().__init__()
@@ -31,6 +33,7 @@ class CheckBox(tk.Tk):
         self.iconphoto(True, self.icon)
         self.mainloop()
 
+#Here we creating the "Xmathematics" that show the user what is the correct and efficent way to solve a problem.
 class Xmathematics(ttk.Frame):
     def __init__(self, parent, Xmathematics_button_open, Xmathematics_button_solve):
         super().__init__(parent)
@@ -42,7 +45,8 @@ class Xmathematics(ttk.Frame):
         Xmathematics_button_solve = ttk.Button(self, text = Xmathematics_button_solve, command = self.solve_the_problem)
         Xmathematics_button_solve.pack(fill = "both")
         self.place(relx = 0, rely = 0, relwidth = 0.3, relheight = 1)
-    
+
+    #This function opens the file for Xmathematics.
     def open_Xmathemtics(self):
         global img
         global filename
@@ -55,6 +59,7 @@ class Xmathematics(ttk.Frame):
         Xmathemtics_show_image.pack()
         self.Xmathematics_show_image = img
 
+    #This function is solving the math problem by Xmathematics.
     def solve_the_problem(self):
         global img
         global filename
@@ -81,6 +86,7 @@ class Xmathematics(ttk.Frame):
         else:
             CheckBox("Error", (200,100), (200,100))
 
+#This class opens and evaluates the solutions for user1 and for user2.
 class Users(ttk.Frame):
     def __init__(self, parent, button_text_user1, button_text_user2):
         super().__init__(parent)
@@ -187,4 +193,5 @@ class Users(ttk.Frame):
         else:
             CheckBox("Error", (200,100), (200,100))
 
+#The main window.
 MainWindow("Xmathematics", (1200,600), (1200,600))
