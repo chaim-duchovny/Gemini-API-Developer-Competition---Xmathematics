@@ -53,12 +53,12 @@ class Xmathematics(ttk.Frame):
         img = ImageTk.PhotoImage(img)
         Xmathemtics_show_image = ttk.Label(self, image = img)
         Xmathemtics_show_image.pack()
-        self.Xmathemtics_show_image = img
+        self.Xmathematics_show_image = img
 
     def solve_the_problem(self):
         global img
         global filename
-        if (self.Xmathemtics_show_image is not None):
+        if (self.Xmathematics_show_image is not None):
             load_dotenv()
             img = PIL.Image.open(filename)
             genai.configure(api_key=os.getenv("gemini_api_key"))
