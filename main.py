@@ -187,4 +187,4 @@ class Users(ttk.Frame):
         else:
             CheckBox("Error", (200,100), (200,100))
 
-MainWindow("xmathematics", (1200,600), (1200,600))
+MainWindow("Xmathematics", (1200,600), (1200,600))
